@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "calculations.schema.json",
+  "title": "PhysioMeter Calculations",
+  "description": "Defines computed values derived from measurement data.",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/$defs/calculation"
+  },
+  "$defs": {
+    "calculation": {
+      "type": "object",
+      "required": ["label", "unit", "operation", "from_measurement"],
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "Display name shown in the summary.",
+          "minLength": 1
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit of measurement (e.g., 'years', 's')."
+        },
+        "operation": {
+          "type": "string",
+          "description": "The type of calculation to perform.",
+          "enum": ["age_from_date_of_birth", "trial_mean", "trial_min", "trial_max", "field_min", "field_max"]
+        },
+        "from_measurement": {
+          "type": "string",
+          "description": "The measurement key to pull data from.",
+          "pattern": "^[a-zA-Z][a-zA-Z0-9]*$"
+        },
+        "field_label": {
+          "type": "string",
+          "description": "For field_min/field_max: label of the inline field to extract. Must match a label in the measurement's fields list.",
+          "minLength": 1
+        },
+        "decimal_places": {
+          "type": "integer",
+          "description": "Number of decimal places to round to.",
+          "minimum": 0,
+          "default": 2
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "operation": { "enum": ["field_min", "field_max"] } } },
+          "then": { "required": ["field_label"] }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,321 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "measurements.schema.json",
+  "title": "PhysioMeter Measurements",
+  "description": "Defines each data input field with its type, validation, and behavior.",
+  "type": "object",
+  "patternProperties": {
+    "^_": {
+      "description": "YAML anchor definitions (reusable snippets). Skipped by the engine."
+    },
+    "^[a-zA-Z]": {
+      "$ref": "#/$defs/measurement"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "measurement": {
+      "type": "object",
+      "required": ["type", "label"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Input type.",
+          "enum": ["text", "date", "radio", "decimal", "integer", "stopwatch", "countdown", "fields"]
+        },
+        "label": {
+          "type": "string",
+          "description": "Display name.",
+          "minLength": 1
+        },
+        "placeholder": {
+          "type": "string",
+          "description": "Placeholder text for the input."
+        },
+        "unit": {
+          "type": "string",
+          "description": "Unit of measurement displayed next to the value."
+        },
+        "min": {
+          "type": "number",
+          "description": "Minimum value (for UI display, NOT validation)."
+        },
+        "max": {
+          "type": "number",
+          "description": "Maximum value (for UI display, NOT validation)."
+        },
+        "instructions": {
+          "type": "string",
+          "description": "Filename (without .md) of a markdown file in instructions/."
+        },
+        "options": {
+          "type": "array",
+          "description": "List of choices (required for radio type).",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        },
+        "num_trials": {
+          "type": "integer",
+          "description": "Number of trial inputs to show (for stopwatch type).",
+          "minimum": 1
+        },
+        "trial_names": {
+          "type": "array",
+          "description": "Optional custom names for each trial.",
+          "items": { "type": "string" }
+        },
+        "field_names": {
+          "type": "array",
+          "description": "References to other measurement keys (for fields type with external references).",
+          "items": { "type": "string", "pattern": "^[a-zA-Z][a-zA-Z0-9]*$" }
+        },
+        "fields": {
+          "type": "array",
+          "description": "Inline field definitions (for fields type with embedded sub-inputs).",
+          "items": { "$ref": "#/$defs/inline_field" }
+        },
+        "validation": { "$ref": "#/$defs/validation" },
+        "computed_display": {
+          "type": "array",
+          "description": "Derived values shown next to the input.",
+          "items": { "$ref": "#/$defs/computed_display_item" }
+        },
+        "disabled_cases": {
+          "type": "array",
+          "description": "Conditions that disable this measurement.",
+          "items": { "$ref": "#/$defs/disabled_cases_item" }
+        },
+        "static_disabled_cases": {
+          "type": "array",
+          "description": "Simple toggle checkboxes. Each is a text string.",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "action_button": { "$ref": "#/$defs/action_button" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "radio" } } },
+          "then": { "required": ["options"] }
+        },
+        {
+          "if": { "properties": { "type": { "const": "stopwatch" } } },
+          "then": { "required": ["num_trials"] }
+        },
+        {
+          "if": { "properties": { "type": { "const": "countdown" } } },
+          "then": { "required": ["duration"] }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "inline_field": {
+      "type": "object",
+      "required": ["type"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["text", "date", "radio", "decimal", "integer", "stopwatch", "countdown"]
+        },
+        "label": { "type": "string" },
+        "placeholder": { "type": "string" },
+        "unit": { "type": "string" },
+        "min": { "type": "number" },
+        "max": { "type": "number" },
+        "duration": {
+          "type": "number",
+          "description": "Duration in seconds (for countdown type)."
+        },
+        "counter_buttons": {
+          "type": "boolean",
+          "description": "Show increment/decrement buttons.",
+          "default": false
+        },
+        "display_only": {
+          "type": "boolean",
+          "description": "If true, this field is a UI utility (e.g., countdown timer) and is not shown in summaries or exports.",
+          "default": false
+        },
+        "options": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "validation": { "$ref": "#/$defs/validation" }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "description": "Validation rules for the input.",
+      "additionalProperties": false,
+      "properties": {
+        "required": {
+          "type": "boolean",
+          "description": "Value must not be empty."
+        },
+        "optional": {
+          "type": "boolean",
+          "description": "If true, an empty value passes validation; a provided value is still validated against the other rules."
+        },
+        "max_length": {
+          "type": "integer",
+          "description": "Maximum string length.",
+          "minimum": 1
+        },
+        "rule": {
+          "type": "string",
+          "description": "Named built-in validation rule.",
+          "enum": ["valid_date_of_birth"]
+        },
+        "is_between": {
+          "type": "array",
+          "description": "Inclusive range check: [min, max]. Value must be >= min and <= max.",
+          "items": { "type": "number" },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "is_between_exclusive": {
+          "type": "array",
+          "description": "Exclusive range check: (min, max). Value must be > min and < max.",
+          "items": { "type": "number" },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "is_integer": {
+          "type": "boolean",
+          "description": "Value must be a whole number."
+        },
+        "is_one_of": {
+          "type": "array",
+          "description": "Value must be one of the listed options.",
+          "items": { "type": "string" }
+        },
+        "matches_pattern": {
+          "type": "string",
+          "description": "Regex pattern the value must match."
+        },
+        "extracted_values": {
+          "type": "object",
+          "description": "Named values extracted from regex capture groups.",
+          "additionalProperties": {
+            "$ref": "#/$defs/extracted_value"
+          }
+        },
+        "rules": {
+          "type": "array",
+          "description": "Inter-field validation rules applied after extraction.",
+          "items": { "$ref": "#/$defs/inter_field_rule" }
+        }
+      }
+    },
+    "extracted_value": {
+      "type": "object",
+      "required": ["group"],
+      "additionalProperties": false,
+      "properties": {
+        "group": {
+          "type": "integer",
+          "description": "Regex capture group index (1-based).",
+          "minimum": 1
+        },
+        "type": {
+          "type": "string",
+          "description": "Expected type of the extracted value.",
+          "enum": ["integer", "decimal"]
+        },
+        "is_between": {
+          "type": "array",
+          "description": "Range check for the extracted value.",
+          "items": { "type": "number" },
+          "minItems": 2,
+          "maxItems": 2
+        }
+      }
+    },
+    "inter_field_rule": {
+      "type": "object",
+      "required": ["field"],
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "type": "string",
+          "description": "Name of the extracted field to check."
+        },
+        "is_greater_than_field": {
+          "type": "string",
+          "description": "The named field must be greater than this other named field."
+        }
+      }
+    },
+    "computed_display_item": {
+      "type": "object",
+      "required": ["label", "unit", "formula"],
+      "additionalProperties": false,
+      "properties": {
+        "label": { "type": "string", "description": "Display label." },
+        "unit": { "type": "string", "description": "Unit string." },
+        "formula": {
+          "type": "string",
+          "description": "Calculation formula type.",
+          "enum": ["divide"]
+        },
+        "numerator": {
+          "type": "number",
+          "description": "Fixed numerator value."
+        },
+        "denominator_from": {
+          "type": "string",
+          "description": "Source of the denominator. 'value' uses the input value.",
+          "enum": ["value"]
+        },
+        "decimal_places": {
+          "type": "integer",
+          "description": "Number of decimal places.",
+          "minimum": 0
+        }
+      }
+    },
+    "disabled_cases_item": {
+      "type": "object",
+      "required": ["text", "show_when"],
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Explanation shown with the override checkbox.",
+          "minLength": 1
+        },
+        "show_when": {
+          "type": "object",
+          "description": "Condition that determines when to show the disabled case override. Uses the same condition syntax as interpretations, plus 'validations_incomplete' and 'every_instance_of'."
+        },
+        "default_checked": {
+          "type": "boolean",
+          "description": "If true, starts checked (measurement disabled by default).",
+          "default": true
+        }
+      }
+    },
+    "action_button": {
+      "type": "object",
+      "required": ["text", "navigate_to"],
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Button label.",
+          "minLength": 1
+        },
+        "navigate_to": {
+          "type": "string",
+          "description": "Measurement key to navigate to.",
+          "pattern": "^[a-zA-Z][a-zA-Z0-9]*$"
+        },
+        "bypass_disabled_indices": {
+          "type": "array",
+          "description": "Indices of disabled_cases entries to bypass on the target measurement.",
+          "items": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}

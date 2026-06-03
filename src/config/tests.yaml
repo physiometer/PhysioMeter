@@ -1,0 +1,19 @@
+# Physical therapy test presets. Each entry gates which measurement groups are available.
+# Fields: key (URL identifier), name, permitted_measurements (omit or null for all).
+
+- key: measurements
+  name: "Measurements"
+  # permitted_measurements omitted → all allowed
+
+- key: annualMobilityAssessment
+  name: "Annual Mobility Assessment"
+  permitted_measurements:
+    - vitalSigns
+    - fiveMeterUsualWalkingSpeed
+    - fiveMeterFastWalkingSpeed
+    - thirtySecondSitToStand
+    - assistiveDevices
+    - fourSquareStepTest
+    - modifiedFourSquareStepTest
+    - timedUpAndGo
+    - timedUpAndGoCognitive

@@ -1,0 +1,66 @@
+# Calculations derive values from measurement data for the summary.
+#
+# operation (one of):
+#   age_from_date_of_birth  - age in years from a date field
+#   trial_mean/min/max      - aggregate all trial values across all instances
+#   field_min / field_max   - aggregate a single inline field across instances (requires field_label)
+#
+# Other fields: label, unit, from_measurement, decimal_places (default 2).
+# field_label must match a "label" in the target measurement's "fields" list.
+
+age:
+  label: "Age"
+  unit: "years"
+  operation: age_from_date_of_birth
+  from_measurement: dob
+
+fiveMeterUsualWalkingSpeedMean:
+  label: "5 Meter Usual Walking Speed - Mean"
+  unit: "s"
+  operation: trial_mean
+  from_measurement: fiveMeterUsualWalkingSpeed
+  decimal_places: 2
+
+fiveMeterFastWalkingSpeedBest:
+  label: "5 Meter Fast Walking Speed - Best"
+  unit: "s"
+  operation: trial_min
+  from_measurement: fiveMeterFastWalkingSpeed
+  decimal_places: 2
+
+thirtySecondSitToStandCount:
+  label: "30 Second Sit to Stand - Count"
+  unit: "repetitions"
+  operation: field_min
+  from_measurement: thirtySecondSitToStand
+  field_label: "Count"
+  decimal_places: 0
+
+fourSquareStepTestBest:
+  label: "Four Square Step Test - Best"
+  unit: "s"
+  operation: trial_min
+  from_measurement: fourSquareStepTest
+  decimal_places: 2
+
+modifiedFourSquareStepTestBest:
+  label: "Modified Four Square Step Test - Best"
+  unit: "s"
+  operation: trial_min
+  from_measurement: modifiedFourSquareStepTest
+  decimal_places: 2
+
+timedUpAndGoBest:
+  label: "Timed Up and Go (TUG) - Best"
+  unit: "s"
+  operation: trial_min
+  from_measurement: timedUpAndGo
+  decimal_places: 2
+
+timedUpAndGoCognitiveBest:
+  label: "Timed Up and Go Cognitive Dual Task - Best"
+  unit: "s"
+  operation: field_min
+  from_measurement: timedUpAndGoCognitive
+  field_label: "Time"
+  decimal_places: 2

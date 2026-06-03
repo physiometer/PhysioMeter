@@ -1,0 +1,144 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Calculation Parity: CALCULATION_SECTION_CONFIGS.valueFunction > full scenario snapshots > at risk female 92 1`] = `
+{
+  "age": 92,
+  "fiveMeterFastWalkingSpeedBest": "5.50",
+  "fiveMeterUsualWalkingSpeedMean": "7.75",
+  "fourSquareStepTestBest": "18.00",
+  "modifiedFourSquareStepTestBest": null,
+  "thirtySecondSitToStandCount": null,
+  "timedUpAndGoBest": "18.00",
+  "timedUpAndGoCognitiveBest": "22.00",
+}
+`;
+
+exports[`Calculation Parity: CALCULATION_SECTION_CONFIGS.valueFunction > full scenario snapshots > borderline male 55 1`] = `
+{
+  "age": 55,
+  "fiveMeterFastWalkingSpeedBest": "4.55",
+  "fiveMeterUsualWalkingSpeedMean": "6.57",
+  "fourSquareStepTestBest": "14.50",
+  "modifiedFourSquareStepTestBest": null,
+  "thirtySecondSitToStandCount": null,
+  "timedUpAndGoBest": "11.50",
+  "timedUpAndGoCognitiveBest": "15.00",
+}
+`;
+
+exports[`Calculation Parity: CALCULATION_SECTION_CONFIGS.valueFunction > full scenario snapshots > empty form state 1`] = `
+{
+  "age": null,
+  "fiveMeterFastWalkingSpeedBest": null,
+  "fiveMeterUsualWalkingSpeedMean": null,
+  "fourSquareStepTestBest": null,
+  "modifiedFourSquareStepTestBest": null,
+  "thirtySecondSitToStandCount": null,
+  "timedUpAndGoBest": null,
+  "timedUpAndGoCognitiveBest": null,
+}
+`;
+
+exports[`Calculation Parity: CALCULATION_SECTION_CONFIGS.valueFunction > full scenario snapshots > healthy female 75 1`] = `
+{
+  "age": 75,
+  "fiveMeterFastWalkingSpeedBest": "3.50",
+  "fiveMeterUsualWalkingSpeedMean": "4.90",
+  "fourSquareStepTestBest": "10.50",
+  "modifiedFourSquareStepTestBest": null,
+  "thirtySecondSitToStandCount": null,
+  "timedUpAndGoBest": "8.50",
+  "timedUpAndGoCognitiveBest": "12.00",
+}
+`;
+
+exports[`Calculation Parity: CALCULATION_SECTION_CONFIGS.valueFunction > full scenario snapshots > healthy male 65 1`] = `
+{
+  "age": 65,
+  "fiveMeterFastWalkingSpeedBest": "3.00",
+  "fiveMeterUsualWalkingSpeedMean": "4.10",
+  "fourSquareStepTestBest": "8.50",
+  "modifiedFourSquareStepTestBest": null,
+  "thirtySecondSitToStandCount": null,
+  "timedUpAndGoBest": "7.50",
+  "timedUpAndGoCognitiveBest": "10.00",
+}
+`;
+
+exports[`Calculation Parity: CALCULATION_SECTION_CONFIGS.valueFunction > full scenario snapshots > multi instance male 75 1`] = `
+{
+  "age": 75,
+  "fiveMeterFastWalkingSpeedBest": null,
+  "fiveMeterUsualWalkingSpeedMean": "5.00",
+  "fourSquareStepTestBest": null,
+  "modifiedFourSquareStepTestBest": null,
+  "thirtySecondSitToStandCount": null,
+  "timedUpAndGoBest": null,
+  "timedUpAndGoCognitiveBest": null,
+}
+`;
+
+exports[`Calculation Parity: CALCULATION_SECTION_CONFIGS.valueFunction > full scenario snapshots > no demographics 1`] = `
+{
+  "age": null,
+  "fiveMeterFastWalkingSpeedBest": "3.00",
+  "fiveMeterUsualWalkingSpeedMean": "4.10",
+  "fourSquareStepTestBest": "8.50",
+  "modifiedFourSquareStepTestBest": null,
+  "thirtySecondSitToStandCount": null,
+  "timedUpAndGoBest": "7.50",
+  "timedUpAndGoCognitiveBest": "10.00",
+}
+`;
+
+exports[`Calculation Parity: CALCULATION_SECTION_CONFIGS.valueFunction > full scenario snapshots > null measurements 1`] = `
+{
+  "age": null,
+  "fiveMeterFastWalkingSpeedBest": null,
+  "fiveMeterUsualWalkingSpeedMean": null,
+  "fourSquareStepTestBest": null,
+  "modifiedFourSquareStepTestBest": null,
+  "thirtySecondSitToStandCount": null,
+  "timedUpAndGoBest": null,
+  "timedUpAndGoCognitiveBest": null,
+}
+`;
+
+exports[`Calculation Parity: CALCULATION_SECTION_CONFIGS.valueFunction > full scenario snapshots > very slow male 75 1`] = `
+{
+  "age": 75,
+  "fiveMeterFastWalkingSpeedBest": "7.50",
+  "fiveMeterUsualWalkingSpeedMean": "9.75",
+  "fourSquareStepTestBest": "22.00",
+  "modifiedFourSquareStepTestBest": null,
+  "thirtySecondSitToStandCount": null,
+  "timedUpAndGoBest": "20.00",
+  "timedUpAndGoCognitiveBest": "25.00",
+}
+`;
+
+exports[`Calculation Parity: CALCULATION_SECTION_CONFIGS.valueFunction > full scenario snapshots > vitals only 1`] = `
+{
+  "age": 65,
+  "fiveMeterFastWalkingSpeedBest": null,
+  "fiveMeterUsualWalkingSpeedMean": null,
+  "fourSquareStepTestBest": null,
+  "modifiedFourSquareStepTestBest": null,
+  "thirtySecondSitToStandCount": null,
+  "timedUpAndGoBest": null,
+  "timedUpAndGoCognitiveBest": null,
+}
+`;
+
+exports[`Calculation Parity: CALCULATION_SECTION_CONFIGS.valueFunction > full scenario snapshots > young patient 1`] = `
+{
+  "age": 40,
+  "fiveMeterFastWalkingSpeedBest": "2.60",
+  "fiveMeterUsualWalkingSpeedMean": "3.45",
+  "fourSquareStepTestBest": "6.50",
+  "modifiedFourSquareStepTestBest": null,
+  "thirtySecondSitToStandCount": null,
+  "timedUpAndGoBest": "5.50",
+  "timedUpAndGoCognitiveBest": "8.00",
+}
+`;

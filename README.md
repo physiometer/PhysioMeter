@@ -1,0 +1,106 @@
+# PhysioMeter
+
+PhysioMeter is a clinical tool for recording physical therapy measurements, computing derived values, and generating evidence-based interpretations. Visit https://physiometer.github.io/PhysioMeter/.
+
+For an end-user walkthrough of the app with annotated screenshots of every step in the Annual Mobility Assessment workflow, see [`docs/user-guide.md`](docs/user-guide.md).
+
+Licensed under the GNU General Public License v3.0 — see [`LICENSE`](LICENSE).
+
+## Features
+
+- **Fully client-side, encrypted at rest** — every patient record is stored only in the browser and encrypted under a password you set on first launch. No patient data is ever sent to or stored on a server, and the password never leaves the browser. See [`SECURITY.md`](SECURITY.md) for the threat model, cryptographic design, and HIPAA-adopter guidance.
+- **Session lock** — manual lock button plus auto-lock after 30 minutes of inactivity. Forgotten password = data loss (no recovery path, intentionally).
+- **Installable, offline-capable** — packaged as a Progressive Web App; can be installed to a home screen or desktop and works fully offline after first load (see [install instructions](docs/user-guide.md#2-installing-as-an-app-optional-offline-capable))
+- **YAML-driven configuration** — all clinical logic (measurements, calculations, interpretations, thresholds) is defined in YAML files, no code changes needed
+- **Declarative validation** — input validation rules are defined alongside measurements
+- **Automated interpretations** — rule-based interpretation engine with threshold table lookups, cross-interpretation references, and severity classifications
+- **PDF export** — generate summary reports with measurements, calculations, and interpretations
+- **Test presets** — configurable subsets of measurements for specific assessment protocols
+
+## Overview
+
+### Home Page
+
+The home page provides four entry points: **New Patient**, **Existing Patient**, **Presets**, and **Utilities**.
+
+### Patients and Sessions
+
+Each patient has a name, date of birth, and sex. Patient data is stored locally in the browser via IndexedDB, encrypted at rest with the session password. From a patient's page, you can create new sessions or revisit previous ones.
+
+### Test Presets
+
+When creating a session, you choose a test preset that determines which measurements are available. Currently there are two presets: **Measurements** (all measurements) and **Annual Mobility Assessment** (a curated subset of 10 measurements).
+
+### Measurements
+
+Each measurement is an input form — ranging from simple single-field entries (vital signs) to multi-trial timed tests (5-meter walking speed with 3 trials and a built-in stopwatch). Measurements can have conditional logic that disables them based on other inputs (e.g., Four Square Step Test is disabled if the patient uses a walker).
+
+### Calculations and Interpretations
+
+**Calculations** are values derived automatically from measurements (e.g., mean walking speed across trials, age from date of birth). **Interpretations** compare calculated values against age/sex normative threshold tables to produce clinical assessments with severity classifications (normal, caution, concern).
+
+### Summary and Export
+
+The summary page displays all measurements, calculations, and interpretations grouped by category with color-coded status indicators. From here, you can export to CSV (three separate files) or a single PDF report.
+
+### Utilities
+
+Standalone tools accessible from the home page — stopwatch, countdown timer, tally counter, calculator, and metronome. These are independent of patient data and don't persist any information.
+
+## Configuration
+
+All clinical logic is defined in 6 YAML files in `src/config/`. To add or modify measurements, calculations, interpretations, or test presets, edit these files — no code changes required.
+
+See [`docs/configuration-guide.md`](docs/configuration-guide.md) for full documentation on the configuration format, available options, and examples.
+
+## Local Development
+
+Prerequisites: [Node.js](https://nodejs.org/) (v22+)
+
+```bash
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## Testing and Validation
+
+```bash
+# Run all tests (Vitest)
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run the end-to-end walkthrough (Playwright). Also regenerates the
+# screenshots used in docs/user-guide.md.
+npm run test:e2e
+
+# Validate YAML configs against JSON Schemas + cross-file reference checks
+npm run validate:config
+```
+
+CI (GitHub Actions) runs unit tests and config validation on Node 22 and 25, then runs the Playwright e2e walkthrough on Node 22. Playwright reports are uploaded as artifacts on failure.
+
+## Reproducing the user guide walkthrough
+
+The screenshots in [`docs/user-guide.md`](docs/user-guide.md) are regenerated by the Playwright test at `e2e/user-guide-walkthrough.spec.js`:
+
+```bash
+npx playwright test              # run the walkthrough
+npx playwright test --headed     # watch it run in a real browser
+```
+
+The test writes PNGs to `docs/user-guide-images/`. `playwright.config.js` auto-starts `npm run dev` on port 5173. After a UI change, re-run the test and commit the updated images alongside any guide edits.
+
+## Deployment
+
+The app is deployed to GitHub Pages at https://physiometer.github.io/PhysioMeter/. Production builds are generated with `npm run build` and output to `dist/`.

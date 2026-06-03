@@ -1,0 +1,287 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "interpretations.schema.json",
+  "title": "PhysioMeter Interpretations",
+  "description": "Defines clinical interpretation rule chains that evaluate patient data and produce messages.",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/$defs/interpretation"
+  },
+  "$defs": {
+    "interpretation": {
+      "type": "object",
+      "required": ["label", "citation", "rules"],
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "Display name.",
+          "minLength": 1
+        },
+        "citation": {
+          "type": "string",
+          "description": "HTML citation/reference link."
+        },
+        "rules": {
+          "type": "array",
+          "description": "Ordered list of rules evaluated top-to-bottom.",
+          "items": { "$ref": "#/$defs/rule" },
+          "minItems": 1
+        }
+      }
+    },
+    "rule": {
+      "type": "object",
+      "description": "A single rule in the interpretation chain. Exactly one of: when+then, when+show_message, let, lookup_threshold, otherwise, check_interpretation.",
+      "oneOf": [
+        { "$ref": "#/$defs/rule_when_skip" },
+        { "$ref": "#/$defs/rule_when_show" },
+        { "$ref": "#/$defs/rule_let" },
+        { "$ref": "#/$defs/rule_lookup_threshold" },
+        { "$ref": "#/$defs/rule_otherwise" },
+        { "$ref": "#/$defs/rule_check_interpretation" }
+      ]
+    },
+    "rule_when_skip": {
+      "type": "object",
+      "required": ["when", "then"],
+      "additionalProperties": false,
+      "properties": {
+        "when": { "$ref": "#/$defs/condition" },
+        "then": { "type": "string", "const": "skip" }
+      }
+    },
+    "rule_when_show": {
+      "type": "object",
+      "required": ["when", "show_message"],
+      "additionalProperties": false,
+      "properties": {
+        "when": { "$ref": "#/$defs/condition" },
+        "show_message": { "$ref": "#/$defs/message" }
+      }
+    },
+    "rule_let": {
+      "type": "object",
+      "required": ["let"],
+      "additionalProperties": false,
+      "properties": {
+        "let": {
+          "type": "object",
+          "description": "Named variables to compute. Keys are variable names.",
+          "additionalProperties": { "$ref": "#/$defs/let_value" }
+        }
+      }
+    },
+    "rule_lookup_threshold": {
+      "type": "object",
+      "required": ["lookup_threshold"],
+      "additionalProperties": false,
+      "properties": {
+        "lookup_threshold": { "$ref": "#/$defs/threshold_lookup" }
+      }
+    },
+    "rule_otherwise": {
+      "type": "object",
+      "required": ["otherwise"],
+      "additionalProperties": false,
+      "properties": {
+        "otherwise": {
+          "type": "object",
+          "required": ["show_message"],
+          "additionalProperties": false,
+          "properties": {
+            "show_message": { "$ref": "#/$defs/message" }
+          }
+        }
+      }
+    },
+    "rule_check_interpretation": {
+      "type": "object",
+      "required": ["check_interpretation"],
+      "additionalProperties": false,
+      "properties": {
+        "check_interpretation": {
+          "type": "object",
+          "required": ["interpretation"],
+          "additionalProperties": false,
+          "properties": {
+            "interpretation": {
+              "type": "string",
+              "description": "Key of another interpretation to evaluate."
+            },
+            "when_null": {
+              "type": "string",
+              "description": "Action when the referenced interpretation returns null.",
+              "enum": ["skip"]
+            },
+            "when_message_includes": {
+              "type": "string",
+              "description": "Text to search for in the referenced interpretation's messages."
+            },
+            "show_message": { "$ref": "#/$defs/message" },
+            "otherwise": {
+              "type": "string",
+              "description": "Action when the message text is not found.",
+              "enum": ["skip"]
+            }
+          }
+        }
+      }
+    },
+    "condition": {
+      "type": "object",
+      "description": "A condition that evaluates to true or false. Can be a simple value check or a logical combinator.",
+      "properties": {
+        "from_measurement": {
+          "type": "string",
+          "description": "Read a value from a measurement. Supports dotted paths (e.g., 'vitalSigns.bloodPressure.systolic')."
+        },
+        "from_calculation": {
+          "type": "string",
+          "description": "Read a value from a calculation."
+        },
+        "from_variable": {
+          "type": "string",
+          "description": "Read a value from a named variable set by a 'let' rule."
+        },
+        "is_missing": {
+          "type": "boolean",
+          "description": "True if the value is null, undefined, or empty."
+        },
+        "exists": {
+          "type": "boolean",
+          "description": "True if the value is present and not empty."
+        },
+        "is_less_than": {
+          "type": "number",
+          "description": "True if value < this number."
+        },
+        "is_at_most": {
+          "type": "number",
+          "description": "True if value <= this number."
+        },
+        "is_greater_than": {
+          "type": "number",
+          "description": "True if value > this number."
+        },
+        "is_at_least": {
+          "type": "number",
+          "description": "True if value >= this number."
+        },
+        "is_between": {
+          "type": "array",
+          "description": "True if min <= value <= max.",
+          "items": { "type": "number" },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "equals": {
+          "description": "True if value === this. Can be string or number.",
+          "oneOf": [
+            { "type": "string" },
+            { "type": "number" }
+          ]
+        },
+        "is_one_of": {
+          "type": "array",
+          "description": "True if the value is in this list.",
+          "items": {}
+        },
+        "matches_pattern": {
+          "type": "string",
+          "description": "True if the string value matches this regex."
+        },
+        "all_of": {
+          "type": "array",
+          "description": "AND: all sub-conditions must be true.",
+          "items": { "$ref": "#/$defs/condition" },
+          "minItems": 1
+        },
+        "any_of": {
+          "type": "array",
+          "description": "OR: at least one sub-condition must be true.",
+          "items": { "$ref": "#/$defs/condition" },
+          "minItems": 1
+        },
+        "not": {
+          "$ref": "#/$defs/condition",
+          "description": "Negate the sub-condition."
+        }
+      },
+      "additionalProperties": false
+    },
+    "let_value": {
+      "type": "object",
+      "description": "Definition for computing a named variable.",
+      "additionalProperties": false,
+      "properties": {
+        "from_calculation": {
+          "type": "string",
+          "description": "Read from a calculation result."
+        },
+        "from_measurement": {
+          "type": "string",
+          "description": "Read from a measurement value."
+        },
+        "from_variable": {
+          "type": "string",
+          "description": "Read from another named variable."
+        },
+        "convert": {
+          "type": "string",
+          "description": "Conversion to apply to the value.",
+          "enum": ["time_to_speed"]
+        },
+        "distance_meters": {
+          "type": "number",
+          "description": "Distance in meters (used with time_to_speed conversion).",
+          "exclusiveMinimum": 0
+        }
+      }
+    },
+    "threshold_lookup": {
+      "type": "object",
+      "required": ["table", "patient_sex_from", "patient_age_from"],
+      "additionalProperties": false,
+      "properties": {
+        "value_from_variable": {
+          "type": "string",
+          "description": "Named variable containing the value to look up."
+        },
+        "value_from_calculation": {
+          "type": "string",
+          "description": "Calculation key to use as the lookup value."
+        },
+        "table": {
+          "type": "string",
+          "description": "Name of the threshold table in thresholds.yaml."
+        },
+        "patient_sex_from": {
+          "type": "string",
+          "description": "Source for patient sex (e.g., 'measurement.sex')."
+        },
+        "patient_age_from": {
+          "type": "string",
+          "description": "Source for patient age (e.g., 'calculation.age')."
+        }
+      }
+    },
+    "message": {
+      "type": "object",
+      "required": ["text", "severity"],
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "Message text displayed to the user.",
+          "minLength": 1
+        },
+        "severity": {
+          "type": "string",
+          "description": "Severity level: concern (red), caution (yellow), normal (green), info (gray).",
+          "enum": ["concern", "caution", "normal", "info"]
+        }
+      }
+    }
+  }
+}

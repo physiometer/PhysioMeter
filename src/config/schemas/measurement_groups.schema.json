@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "measurement_groups.schema.json",
+  "title": "PhysioMeter Measurement Groups",
+  "description": "Links measurements to their calculations, interpretations, and display order.",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "required": ["key", "name"],
+    "additionalProperties": false,
+    "properties": {
+      "key": {
+        "type": "string",
+        "description": "Internal state key matching a measurement config key.",
+        "pattern": "^[a-zA-Z][a-zA-Z0-9]*$"
+      },
+      "name": {
+        "type": "string",
+        "description": "Display name shown in navigation and UI.",
+        "minLength": 1
+      },
+      "patient_level": {
+        "type": "boolean",
+        "description": "If true, this is a patient attribute shown read-only in summary (not in measurement selection).",
+        "default": false
+      },
+      "calculations": {
+        "type": "array",
+        "description": "List of calculation keys to display in this group's summary.",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-zA-Z][a-zA-Z0-9]*$"
+        }
+      },
+      "interpretations": {
+        "type": "array",
+        "description": "List of interpretation keys to display in this group's summary.",
+        "items": {
+          "type": "string",
+          "pattern": "^[a-zA-Z][a-zA-Z0-9]*$"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "tests.schema.json",
+  "title": "PhysioMeter Test Presets",
+  "description": "Defines test presets that control which measurements are available in a session.",
+  "type": "array",
+  "minItems": 1,
+  "items": {
+    "type": "object",
+    "required": ["key", "name"],
+    "additionalProperties": false,
+    "properties": {
+      "key": {
+        "type": "string",
+        "description": "URL-friendly identifier for routing. Must be unique.",
+        "pattern": "^[a-zA-Z][a-zA-Z0-9]*$"
+      },
+      "name": {
+        "type": "string",
+        "description": "Display name shown in the UI.",
+        "minLength": 1
+      },
+      "permitted_measurements": {
+        "description": "List of measurement group keys that are allowed. If omitted, all measurements are available.",
+        "oneOf": [
+          { "type": "null" },
+          {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^[a-zA-Z][a-zA-Z0-9]*$" },
+            "minItems": 1
+          }
+        ]
+      }
+    }
+  }
+}

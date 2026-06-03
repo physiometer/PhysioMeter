@@ -1,0 +1,10 @@
+{
+    "yaml.schemas": {
+        "src/config/schemas/tests.schema.json": "src/config/tests.yaml",
+        "src/config/schemas/measurement_groups.schema.json": "src/config/measurement_groups.yaml",
+        "src/config/schemas/calculations.schema.json": "src/config/calculations.yaml",
+        "src/config/schemas/thresholds.schema.json": "src/config/thresholds.yaml",
+        "src/config/schemas/measurements.schema.json": "src/config/measurements.yaml",
+        "src/config/schemas/interpretations.schema.json": "src/config/interpretations.yaml"
+    }
+}

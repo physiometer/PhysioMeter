@@ -1,0 +1,247 @@
+# Measurement input definitions: type, validation, and behavior.
+#
+# type: text | date | radio | decimal | integer | stopwatch | countdown | fields
+# Common fields: label, placeholder, unit, min/max (UI hints only — not validated),
+# instructions (markdown filename in instructions/), options (for radio).
+#
+# validation: see validationEngine.js for supported rules.
+#
+# Composite (type: fields):
+#   field_names: references to other measurement keys (render as separate inputs)
+#   fields:      inline definitions (each with own type/label/validation);
+#                display_only: true hides the field from summaries/exports.
+#
+# Stopwatch: num_trials, trial_names.
+#
+# disabled_cases:        [{ text, show_when, default_checked }] - conditional override checkboxes.
+# static_disabled_cases: plain text entries that render as toggleable checkboxes.
+#
+# computed_display: [{ label, unit, formula, numerator, denominator_from, decimal_places }]
+#   shows derived values next to the input. Currently only formula: divide is supported.
+#
+# action_button: { text, navigate_to, bypass_disabled_indices } - navigation button on the page.
+
+name:
+  type: text
+  label: "Name"
+  placeholder: "Enter name"
+  validation:
+    required: true
+    max_length: 1000
+
+dob:
+  type: date
+  label: "Date of Birth"
+  placeholder: "mm/dd/yyyy"
+  validation:
+    rule: valid_date_of_birth
+
+sex:
+  type: radio
+  label: "Sex"
+  options: ["Male", "Female"]
+
+bloodPressure:
+  type: text
+  label: "Blood Pressure"
+  placeholder: "blood pressure (XX/YY)"
+  instructions: BloodPressure
+  validation:
+    matches_pattern: "^(\\d{1,3})/(\\d{1,3})$"
+    extracted_values:
+      systolic:
+        group: 1
+        type: integer
+        is_between: [0, 200]
+      diastolic:
+        group: 2
+        type: integer
+        is_between: [0, 200]
+    rules:
+      - field: systolic
+        is_greater_than_field: diastolic
+
+oxygenSaturation:
+  type: decimal
+  label: "Oxygen Saturation (optional)"
+  placeholder: "oxygen saturation (%)"
+  min: 0
+  max: 100
+  unit: "%"
+  instructions: OxygenSaturation
+  validation:
+    optional: true
+    is_between: [0, 100]
+
+restingPulseRate:
+  type: integer
+  label: "Resting Pulse Rate"
+  placeholder: "resting pulse rate (bpm)"
+  min: 0
+  max: 300
+  validation:
+    is_between: [0, 300]
+    is_integer: true
+
+vitalSigns:
+  type: fields
+  label: "Vital Signs"
+  field_names:
+    - bloodPressure
+    - restingPulseRate
+    - oxygenSaturation
+
+# YAML anchors let us define disabled-case conditions once and reuse them across measurements.
+_physical_activity_disabled_case: &physical_activity_disabled_case
+  text: "This patient is ineligible for physical activity. Uncheck this box to bypass the Vital Signs requirement."
+  default_checked: true
+  show_when:
+    any_of:
+      - from_measurement: vitalSigns.restingPulseRate
+        is_missing: true
+      - from_measurement: vitalSigns.bloodPressure
+        is_missing: true
+      - from_measurement: vitalSigns.restingPulseRate
+        is_greater_than: 100
+      - from_measurement: vitalSigns.oxygenSaturation
+        is_less_than: 90
+      - from_measurement: vitalSigns.bloodPressure.systolic
+        is_greater_than: 180
+      - from_measurement: vitalSigns.bloodPressure.diastolic
+        is_greater_than: 110
+      - from_measurement: vitalSigns.bloodPressure.systolic
+        is_less_than: 90
+      - from_measurement: vitalSigns.bloodPressure.diastolic
+        is_less_than: 60
+
+fiveMeterUsualWalkingSpeed:
+  type: stopwatch
+  label: "5 Meter Usual Walking Speed"
+  placeholder: "Time to walk 5 meters (seconds)"
+  instructions: FiveMeterUsualWalkingSpeed
+  num_trials: 2
+  validation:
+    is_between_exclusive: [0, 3600]
+  computed_display:
+    - label: "Walking Speed"
+      unit: "m/s"
+      formula: divide
+      numerator: 5
+      denominator_from: value
+      decimal_places: 2
+  disabled_cases:
+    - *physical_activity_disabled_case
+
+fiveMeterFastWalkingSpeed:
+  type: stopwatch
+  label: "5 Meter Fast Walking Speed"
+  placeholder: "Time to walk 5 meters (seconds)"
+  instructions: FiveMeterFastWalkingSpeed
+  num_trials: 2
+  validation:
+    is_between_exclusive: [0, 3600]
+  computed_display:
+    - label: "Walking Speed"
+      unit: "m/s"
+      formula: divide
+      numerator: 5
+      denominator_from: value
+      decimal_places: 2
+  disabled_cases:
+    - *physical_activity_disabled_case
+
+thirtySecondSitToStand:
+  type: fields
+  label: "30 Second Sit to Stand"
+  instructions: ThirtySecondSitToStand
+  static_disabled_cases:
+    - "Participant cannot stand without using their hands"
+  disabled_cases:
+    - *physical_activity_disabled_case
+  fields:
+    - type: countdown
+      duration: 30
+      display_only: true
+    - type: integer
+      label: "Count"
+      placeholder: "Number of sit to stands"
+      min: 0
+      counter_buttons: true
+      validation:
+        is_between: [0, 100]
+        is_integer: true
+
+assistiveDevices:
+  type: radio
+  label: "Assistive Device for Four Square Step Test"
+  options: ["None", "Straight Cane", "Other"]
+
+fourSquareStepTest:
+  type: stopwatch
+  label: "Four Square Step Test"
+  placeholder: "Time to complete test (seconds)"
+  instructions: FourSquareStepTest
+  num_trials: 2
+  validation:
+    is_between_exclusive: [0, 3600]
+  disabled_cases:
+    - *physical_activity_disabled_case
+    - text: "Select an assistive device. If an assistive device is selected, but is not 'None' or 'Straight Cane', the participant should perform the Modified Four Square Step Test instead. Uncheck this box to bypass this recommendation."
+      default_checked: true
+      show_when:
+        not:
+          every_instance_of: assistiveDevices
+          is_one_of: ["None", "Straight Cane"]
+  action_button:
+    text: "Patient does not clear apparatus, navigate to modified 4 square step protocol"
+    navigate_to: modifiedFourSquareStepTest
+    bypass_disabled_indices: [1]
+
+modifiedFourSquareStepTest:
+  type: stopwatch
+  label: "Modified Four Square Step Test"
+  placeholder: "Time to complete test (seconds)"
+  instructions: ModifiedFourSquareStepTest
+  num_trials: 2
+  validation:
+    is_between_exclusive: [0, 3600]
+  disabled_cases:
+    - *physical_activity_disabled_case
+    - text: "Select an assistive device. If the assistive device is 'None' or 'Straight Cane', the participant should perform the Four Square Step Test instead. Uncheck this box to bypass this recommendation."
+      default_checked: true
+      show_when:
+        not:
+          every_instance_of: assistiveDevices
+          equals: "Other"
+
+timedUpAndGo:
+  type: stopwatch
+  label: "Timed Up and Go (TUG)"
+  placeholder: "Time to complete test (seconds)"
+  instructions: TimedUpAndGo
+  num_trials: 2
+  validation:
+    is_between_exclusive: [0, 3600]
+  disabled_cases:
+    - *physical_activity_disabled_case
+
+timedUpAndGoCognitive:
+  type: fields
+  label: "Timed Up and Go Cognitive Dual Task"
+  instructions: TimedUpAndGoCognitive
+  disabled_cases:
+    - *physical_activity_disabled_case
+  fields:
+    - type: stopwatch
+      label: "Time"
+      placeholder: "Time to complete test (seconds)"
+      validation:
+        is_between_exclusive: [0, 3600]
+    - type: integer
+      label: "Error Count"
+      placeholder: "Number of errors"
+      min: 0
+      counter_buttons: true
+      validation:
+        is_between: [0, 50]
+        is_integer: true

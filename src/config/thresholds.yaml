@@ -1,0 +1,143 @@
+# Reference normative data for SD-band mobility zones.
+#
+# zone_defaults (required, top-level):
+#   yellow_sd / red_sd - SD-multipliers used as the yellow and red zone boundaries (yellow_sd < red_sd).
+#   descriptions       - Verbatim text rendered after the cutoff and reference lines in each zone message.
+#
+# Threshold tables (every other top-level key):
+#   compare_as - higher_is_better (e.g. walking speed; lower values are worse) or lower_is_better.
+#   unit       - Display unit appended to the cutoff value (e.g., "m/s", "sec").
+#   decimals   - Decimal places to render for the cutoff value.
+#   <sex>      - Male / Female maps of <age_bracket> → { mean, sd }.
+#
+# Zones are derived in interpretationEngine.js as mean ± yellow_sd × sd (yellow boundary)
+# and mean ± red_sd × sd (red boundary), with the direction set by compare_as.
+# Age brackets: 50-59, 60-69, 70-79, 80-89, 90+.
+
+# Defaults follow the v2.1 Interpretation Charts and the figure on page 24 of
+# the v2 Manual: green = >=mean, yellow = (mean - 1 SD, mean), red = <= mean - 1 SD.
+# Note: the v2 Manual's prose on page 23 describes a wider green band at
+# >= mean - 0.5 SD, which contradicts both the page-24 figure and the v2.1
+# charts. Task Force confirmed v2.1 (yellow_sd: 0.0) as the intended encoding.
+# See THRESHOLDS_DISCREPANCIES.md.
+zone_defaults:
+  yellow_sd: 0.0
+  red_sd: 1.0
+  descriptions:
+    green: "The participant's performance is similar to others in the same age range and sex."
+    yellow: "The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities."
+    red: "The participant likely has mobility issues that are limiting daily activities."
+
+usual_walking_speed:
+  compare_as: "higher_is_better"
+  unit: "m/s"
+  decimals: 2
+  Male:
+    "50-59": { mean: 1.31, sd: 0.16 }
+    "60-69": { mean: 1.27, sd: 0.17 }
+    "70-79": { mean: 1.18, sd: 0.20 }
+    "80-89": { mean: 1.02, sd: 0.20 }
+    "90+":   { mean: 0.91, sd: 0.17 }
+  Female:
+    "50-59": { mean: 1.26, sd: 0.17 }
+    "60-69": { mean: 1.22, sd: 0.16 }
+    "70-79": { mean: 1.12, sd: 0.20 }
+    "80-89": { mean: 0.98, sd: 0.21 }
+    "90+":   { mean: 0.76, sd: 0.21 }
+
+fast_walking_speed:
+  compare_as: "higher_is_better"
+  unit: "m/s"
+  decimals: 2
+  Male:
+    "50-59": { mean: 1.33, sd: 0.55 }
+    "60-69": { mean: 1.40, sd: 0.30 }
+    "70-79": { mean: 1.58, sd: 0.51 }  # TODO: verify -- mean increases vs 60-69 bracket
+    "80-89": { mean: 1.36, sd: 0.38 }
+    "90+":   { mean: 1.19, sd: 0.32 }
+  Female:
+    "50-59": { mean: 1.67, sd: 0.51 }
+    "60-69": { mean: 1.59, sd: 0.37 }
+    "70-79": { mean: 1.52, sd: 0.33 }
+    "80-89": { mean: 1.20, sd: 0.33 }
+    "90+":   { mean: 1.02, sd: 0.27 }
+
+four_square_step_test:
+  compare_as: "lower_is_better"
+  unit: "sec"
+  decimals: 1
+  Male:
+    "50-59": { mean: 10.2, sd: 3.3 }
+    "60-69": { mean: 9.4,  sd: 1.9 }
+    "70-79": { mean: 10.9, sd: 4.2 }
+    "80-89": { mean: 15.8, sd: 8.0 }
+    "90+":   { mean: 13.0, sd: 3.4 }
+  Female:
+    "50-59": { mean: 10.3, sd: 4.7 }
+    "60-69": { mean: 9.7,  sd: 2.4 }
+    "70-79": { mean: 10.9, sd: 3.6 }
+    "80-89": { mean: 14.9, sd: 5.7 }
+    "90+":   { mean: 20.0, sd: 16.7 }  # TODO: verify -- sd is 83% of mean
+
+# TUG: v2.1 chart prints identical tables for Male and Female (likely a chart
+# printing error per the audit; the earlier YAML carried distinct Male values
+# from a deprecated source). Per Task Force confirmation, both sexes use the
+# v2.1 Female table values. See THRESHOLDS_DISCREPANCIES.md.
+timed_up_and_go:
+  compare_as: "lower_is_better"
+  unit: "sec"
+  decimals: 1
+  Male:
+    "50-59": { mean: 8.7,  sd: 3.3 }
+    "60-69": { mean: 8.1,  sd: 1.8 }
+    "70-79": { mean: 9.2,  sd: 2.7 }
+    "80-89": { mean: 11.4, sd: 3.0 }
+    "90+":   { mean: 14.7, sd: 6.3 }
+  Female:
+    "50-59": { mean: 8.7,  sd: 3.3 }
+    "60-69": { mean: 8.1,  sd: 1.8 }
+    "70-79": { mean: 9.2,  sd: 2.7 }
+    "80-89": { mean: 11.4, sd: 3.0 }
+    "90+":   { mean: 14.7, sd: 6.3 }
+
+# TUG Cognitive: same v2.1 Male/Female duplication; values from v2.1 Female.
+timed_up_and_go_cognitive:
+  compare_as: "lower_is_better"
+  unit: "sec"
+  decimals: 1
+  Male:
+    "50-59": { mean: 11.9, sd: 5.9 }
+    "60-69": { mean: 13.0, sd: 5.0 }
+    "70-79": { mean: 12.9, sd: 5.0 }
+    "80-89": { mean: 17.3, sd: 4.7 }
+    "90+":   { mean: 24.3, sd: 10.2 }
+  Female:
+    "50-59": { mean: 11.9, sd: 5.9 }
+    "60-69": { mean: 13.0, sd: 5.0 }
+    "70-79": { mean: 12.9, sd: 5.0 }
+    "80-89": { mean: 17.3, sd: 4.7 }
+    "90+":   { mean: 24.3, sd: 10.2 }
+
+# 30-Second Sit to Stand: means/SDs from the v2.1 chart and confirmed against the
+# source paper (PMC10524633). The chart's printed zone-band columns for 30STS are
+# internally inconsistent with the means/SDs in the same rows (e.g., Men 60-69
+# prints green "20+" with mean 10.2), so PhysioMeter does NOT reproduce those
+# printed bands. Bands are instead derived from mean/SD via the standard
+# zone_defaults mechanism (yellow_sd: 0.0, red_sd: 1.0). See
+# THRESHOLDS_DISCREPANCIES.md for the reasoning.
+thirty_second_sit_to_stand:
+  compare_as: "higher_is_better"
+  unit: "repetitions"
+  decimals: 0
+  Male:
+    "50-59": { mean: 13.9, sd: 3.9 }
+    "60-69": { mean: 10.2, sd: 4.9 }  # TODO: verify -- non-monotonic with adjacent age brackets in v2.1
+    "70-79": { mean: 14.0, sd: 5.8 }
+    "80-89": { mean: 9.1,  sd: 6.1 }
+    "90+":   { mean: 9.1,  sd: 4.2 }
+  Female:
+    "50-59": { mean: 14.3, sd: 6.9 }
+    "60-69": { mean: 13.4, sd: 4.1 }
+    "70-79": { mean: 11.6, sd: 5.3 }
+    "80-89": { mean: 9.7,  sd: 4.2 }
+    "90+":   { mean: 8.6,  sd: 3.7 }

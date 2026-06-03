@@ -1,0 +1,1144 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Full interpretation scenario snapshots > age/sex matrix > Female dob=1933-01-15 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": [
+    {
+      "text": "Green Zone (>= 1.02 m/s)
+Reference Mean 1.02 (Ages 90+) Standard Deviation 0.27
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "fourSquareStepTest": [
+    {
+      "text": "Green Zone (<= 20.0 sec)
+Reference Mean 20 (Ages 90+) Standard Deviation 16.7
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": [
+    {
+      "text": "Green Zone (<= 14.7 sec)
+Reference Mean 14.7 (Ages 90+) Standard Deviation 6.3
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "timedUpAndGoCognitive": [
+    {
+      "text": "Green Zone (<= 24.3 sec)
+Reference Mean 24.3 (Ages 90+) Standard Deviation 10.2
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "usualWalkingSpeed": [
+    {
+      "text": "Green Zone (>= 0.76 m/s)
+Reference Mean 0.76 (Ages 90+) Standard Deviation 0.21
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > age/sex matrix > Female dob=1940-01-15 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": [
+    {
+      "text": "Green Zone (>= 1.20 m/s)
+Reference Mean 1.2 (Ages 80-89) Standard Deviation 0.33
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "fourSquareStepTest": [
+    {
+      "text": "Green Zone (<= 14.9 sec)
+Reference Mean 14.9 (Ages 80-89) Standard Deviation 5.7
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": [
+    {
+      "text": "Green Zone (<= 11.4 sec)
+Reference Mean 11.4 (Ages 80-89) Standard Deviation 3
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "timedUpAndGoCognitive": [
+    {
+      "text": "Green Zone (<= 17.3 sec)
+Reference Mean 17.3 (Ages 80-89) Standard Deviation 4.7
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "usualWalkingSpeed": [
+    {
+      "text": "Green Zone (>= 0.98 m/s)
+Reference Mean 0.98 (Ages 80-89) Standard Deviation 0.21
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > age/sex matrix > Female dob=1950-01-15 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": [
+    {
+      "text": "Green Zone (>= 1.52 m/s)
+Reference Mean 1.52 (Ages 70-79) Standard Deviation 0.33
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "fourSquareStepTest": [
+    {
+      "text": "Green Zone (<= 10.9 sec)
+Reference Mean 10.9 (Ages 70-79) Standard Deviation 3.6
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": [
+    {
+      "text": "Green Zone (<= 9.2 sec)
+Reference Mean 9.2 (Ages 70-79) Standard Deviation 2.7
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "timedUpAndGoCognitive": [
+    {
+      "text": "Green Zone (<= 12.9 sec)
+Reference Mean 12.9 (Ages 70-79) Standard Deviation 5
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "usualWalkingSpeed": [
+    {
+      "text": "Green Zone (>= 1.12 m/s)
+Reference Mean 1.12 (Ages 70-79) Standard Deviation 0.2
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > age/sex matrix > Female dob=1960-01-15 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": [
+    {
+      "text": "Yellow Zone (< 1.59 m/s)
+Reference Mean 1.59 (Ages 60-69) Standard Deviation 0.37
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "fourSquareStepTest": [
+    {
+      "text": "Green Zone (<= 9.7 sec)
+Reference Mean 9.7 (Ages 60-69) Standard Deviation 2.4
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": [
+    {
+      "text": "Yellow Zone (> 8.1 sec)
+Reference Mean 8.1 (Ages 60-69) Standard Deviation 1.8
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "timedUpAndGoCognitive": [
+    {
+      "text": "Green Zone (<= 13.0 sec)
+Reference Mean 13 (Ages 60-69) Standard Deviation 5
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "usualWalkingSpeed": [
+    {
+      "text": "Yellow Zone (< 1.22 m/s)
+Reference Mean 1.22 (Ages 60-69) Standard Deviation 0.16
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > age/sex matrix > Female dob=1970-01-15 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": [
+    {
+      "text": "Yellow Zone (< 1.67 m/s)
+Reference Mean 1.67 (Ages 50-59) Standard Deviation 0.51
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "fourSquareStepTest": [
+    {
+      "text": "Green Zone (<= 10.3 sec)
+Reference Mean 10.3 (Ages 50-59) Standard Deviation 4.7
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": [
+    {
+      "text": "Green Zone (<= 8.7 sec)
+Reference Mean 8.7 (Ages 50-59) Standard Deviation 3.3
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "timedUpAndGoCognitive": [
+    {
+      "text": "Green Zone (<= 11.9 sec)
+Reference Mean 11.9 (Ages 50-59) Standard Deviation 5.9
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "usualWalkingSpeed": [
+    {
+      "text": "Yellow Zone (< 1.26 m/s)
+Reference Mean 1.26 (Ages 50-59) Standard Deviation 0.17
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > age/sex matrix > Male dob=1933-01-15 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": [
+    {
+      "text": "Green Zone (>= 1.19 m/s)
+Reference Mean 1.19 (Ages 90+) Standard Deviation 0.32
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "fourSquareStepTest": [
+    {
+      "text": "Green Zone (<= 13.0 sec)
+Reference Mean 13 (Ages 90+) Standard Deviation 3.4
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": [
+    {
+      "text": "Green Zone (<= 14.7 sec)
+Reference Mean 14.7 (Ages 90+) Standard Deviation 6.3
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "timedUpAndGoCognitive": [
+    {
+      "text": "Green Zone (<= 24.3 sec)
+Reference Mean 24.3 (Ages 90+) Standard Deviation 10.2
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "usualWalkingSpeed": [
+    {
+      "text": "Green Zone (>= 0.91 m/s)
+Reference Mean 0.91 (Ages 90+) Standard Deviation 0.17
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > age/sex matrix > Male dob=1940-01-15 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": [
+    {
+      "text": "Green Zone (>= 1.36 m/s)
+Reference Mean 1.36 (Ages 80-89) Standard Deviation 0.38
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "fourSquareStepTest": [
+    {
+      "text": "Green Zone (<= 15.8 sec)
+Reference Mean 15.8 (Ages 80-89) Standard Deviation 8
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": [
+    {
+      "text": "Green Zone (<= 11.4 sec)
+Reference Mean 11.4 (Ages 80-89) Standard Deviation 3
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "timedUpAndGoCognitive": [
+    {
+      "text": "Green Zone (<= 17.3 sec)
+Reference Mean 17.3 (Ages 80-89) Standard Deviation 4.7
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "usualWalkingSpeed": [
+    {
+      "text": "Green Zone (>= 1.02 m/s)
+Reference Mean 1.02 (Ages 80-89) Standard Deviation 0.2
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > age/sex matrix > Male dob=1950-01-15 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": [
+    {
+      "text": "Yellow Zone (< 1.58 m/s)
+Reference Mean 1.58 (Ages 70-79) Standard Deviation 0.51
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "fourSquareStepTest": [
+    {
+      "text": "Green Zone (<= 10.9 sec)
+Reference Mean 10.9 (Ages 70-79) Standard Deviation 4.2
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": [
+    {
+      "text": "Green Zone (<= 9.2 sec)
+Reference Mean 9.2 (Ages 70-79) Standard Deviation 2.7
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "timedUpAndGoCognitive": [
+    {
+      "text": "Green Zone (<= 12.9 sec)
+Reference Mean 12.9 (Ages 70-79) Standard Deviation 5
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "usualWalkingSpeed": [
+    {
+      "text": "Yellow Zone (< 1.18 m/s)
+Reference Mean 1.18 (Ages 70-79) Standard Deviation 0.2
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > age/sex matrix > Male dob=1960-01-15 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": [
+    {
+      "text": "Green Zone (>= 1.40 m/s)
+Reference Mean 1.4 (Ages 60-69) Standard Deviation 0.3
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "fourSquareStepTest": [
+    {
+      "text": "Yellow Zone (> 9.4 sec)
+Reference Mean 9.4 (Ages 60-69) Standard Deviation 1.9
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": [
+    {
+      "text": "Yellow Zone (> 8.1 sec)
+Reference Mean 8.1 (Ages 60-69) Standard Deviation 1.8
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "timedUpAndGoCognitive": [
+    {
+      "text": "Green Zone (<= 13.0 sec)
+Reference Mean 13 (Ages 60-69) Standard Deviation 5
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "usualWalkingSpeed": [
+    {
+      "text": "Yellow Zone (< 1.27 m/s)
+Reference Mean 1.27 (Ages 60-69) Standard Deviation 0.17
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > age/sex matrix > Male dob=1970-01-15 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": [
+    {
+      "text": "Green Zone (>= 1.33 m/s)
+Reference Mean 1.33 (Ages 50-59) Standard Deviation 0.55
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "fourSquareStepTest": [
+    {
+      "text": "Green Zone (<= 10.2 sec)
+Reference Mean 10.2 (Ages 50-59) Standard Deviation 3.3
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": [
+    {
+      "text": "Green Zone (<= 8.7 sec)
+Reference Mean 8.7 (Ages 50-59) Standard Deviation 3.3
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "timedUpAndGoCognitive": [
+    {
+      "text": "Green Zone (<= 11.9 sec)
+Reference Mean 11.9 (Ages 50-59) Standard Deviation 5.9
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "usualWalkingSpeed": [
+    {
+      "text": "Red Zone (< 1.15 m/s)
+Reference Mean 1.31 (Ages 50-59) Standard Deviation 0.16
+The participant likely has mobility issues that are limiting daily activities.",
+      "type": "danger",
+    },
+  ],
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > at risk female 92 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": [
+    {
+      "text": "Fall Risk, <1.10 m/sec (Sn .76, Sp .60)",
+      "type": "danger",
+    },
+    {
+      "text": "Yellow Zone (< 1.02 m/s)
+Reference Mean 1.02 (Ages 90+) Standard Deviation 0.27
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "fourSquareStepTest": [
+    {
+      "text": "Multiple Fall risk >=15 (Sn .85, Sp .88)",
+      "type": "danger",
+    },
+    {
+      "text": "Green Zone (<= 20.0 sec)
+Reference Mean 20 (Ages 90+) Standard Deviation 16.7
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": [
+    {
+      "text": "Fall risk >12.0 sec (Sn .74, Sp .31)",
+      "type": "danger",
+    },
+    {
+      "text": "Frailty >=17.8 (Sn .93, Sp .98)",
+      "type": "danger",
+    },
+    {
+      "text": "Yellow Zone (> 14.7 sec)
+Reference Mean 14.7 (Ages 90+) Standard Deviation 6.3
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "timedUpAndGoCognitive": [
+    {
+      "text": "Fall risk >11 sec (Sn 1.00, Sp .66)",
+      "type": "danger",
+    },
+    {
+      "text": "Green Zone (<= 24.3 sec)
+Reference Mean 24.3 (Ages 90+) Standard Deviation 10.2
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "usualWalkingSpeed": [
+    {
+      "text": "Fall Risk, <0.76m/sec (Sn .65, Sp .71)",
+      "type": "danger",
+    },
+    {
+      "text": "Yellow Zone (< 0.76 m/s)
+Reference Mean 0.76 (Ages 90+) Standard Deviation 0.21
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > borderline male 55 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": [
+    {
+      "text": "Fall Risk, <1.10 m/sec (Sn .76, Sp .60)",
+      "type": "danger",
+    },
+    {
+      "text": "Yellow Zone (< 1.33 m/s)
+Reference Mean 1.33 (Ages 50-59) Standard Deviation 0.55
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "fourSquareStepTest": [
+    {
+      "text": "Red Zone (> 13.5 sec)
+Reference Mean 10.2 (Ages 50-59) Standard Deviation 3.3
+The participant likely has mobility issues that are limiting daily activities.",
+      "type": "danger",
+    },
+  ],
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": [
+    {
+      "text": "Yellow Zone (> 8.7 sec)
+Reference Mean 8.7 (Ages 50-59) Standard Deviation 3.3
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "timedUpAndGoCognitive": [
+    {
+      "text": "Fall risk >11 sec (Sn 1.00, Sp .66)",
+      "type": "danger",
+    },
+    {
+      "text": "Yellow Zone (> 11.9 sec)
+Reference Mean 11.9 (Ages 50-59) Standard Deviation 5.9
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "usualWalkingSpeed": [
+    {
+      "text": "Red Zone (< 1.15 m/s)
+Reference Mean 1.31 (Ages 50-59) Standard Deviation 0.16
+The participant likely has mobility issues that are limiting daily activities.",
+      "type": "danger",
+    },
+  ],
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > empty form state 1`] = `
+{
+  "annualMobilityAssessment": null,
+  "fastWalkingSpeed": null,
+  "fourSquareStepTest": null,
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": null,
+  "timedUpAndGoCognitive": null,
+  "usualWalkingSpeed": null,
+  "vitalSigns": null,
+}
+`;
+
+exports[`Full interpretation scenario snapshots > female 75 TUG fall risk 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": null,
+  "fourSquareStepTest": null,
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": [
+    {
+      "text": "Fall risk >12.0 sec (Sn .74, Sp .31)",
+      "type": "danger",
+    },
+    {
+      "text": "Red Zone (> 11.9 sec)
+Reference Mean 9.2 (Ages 70-79) Standard Deviation 2.7
+The participant likely has mobility issues that are limiting daily activities.",
+      "type": "danger",
+    },
+  ],
+  "timedUpAndGoCognitive": null,
+  "usualWalkingSpeed": null,
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > female 85 TUG fall risk 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": null,
+  "fourSquareStepTest": null,
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": [
+    {
+      "text": "Fall risk >12.0 sec (Sn .74, Sp .31)",
+      "type": "danger",
+    },
+    {
+      "text": "Yellow Zone (> 11.4 sec)
+Reference Mean 11.4 (Ages 80-89) Standard Deviation 3
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "timedUpAndGoCognitive": null,
+  "usualWalkingSpeed": null,
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > healthy female 75 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": [
+    {
+      "text": "Yellow Zone (< 1.52 m/s)
+Reference Mean 1.52 (Ages 70-79) Standard Deviation 0.33
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "fourSquareStepTest": [
+    {
+      "text": "Green Zone (<= 10.9 sec)
+Reference Mean 10.9 (Ages 70-79) Standard Deviation 3.6
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": [
+    {
+      "text": "Green Zone (<= 9.2 sec)
+Reference Mean 9.2 (Ages 70-79) Standard Deviation 2.7
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "timedUpAndGoCognitive": [
+    {
+      "text": "Fall risk >11 sec (Sn 1.00, Sp .66)",
+      "type": "danger",
+    },
+    {
+      "text": "Green Zone (<= 12.9 sec)
+Reference Mean 12.9 (Ages 70-79) Standard Deviation 5
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "usualWalkingSpeed": [
+    {
+      "text": "Yellow Zone (< 1.12 m/s)
+Reference Mean 1.12 (Ages 70-79) Standard Deviation 0.2
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > healthy male 65 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": [
+    {
+      "text": "Green Zone (>= 1.40 m/s)
+Reference Mean 1.4 (Ages 60-69) Standard Deviation 0.3
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "fourSquareStepTest": [
+    {
+      "text": "Green Zone (<= 9.4 sec)
+Reference Mean 9.4 (Ages 60-69) Standard Deviation 1.9
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": [
+    {
+      "text": "Green Zone (<= 8.1 sec)
+Reference Mean 8.1 (Ages 60-69) Standard Deviation 1.8
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "timedUpAndGoCognitive": [
+    {
+      "text": "Green Zone (<= 13.0 sec)
+Reference Mean 13 (Ages 60-69) Standard Deviation 5
+The participant's performance is similar to others in the same age range and sex.",
+      "type": "success",
+    },
+  ],
+  "usualWalkingSpeed": [
+    {
+      "text": "Yellow Zone (< 1.27 m/s)
+Reference Mean 1.27 (Ages 60-69) Standard Deviation 0.17
+The participant is performing below normative data, which could be an early indicator of mobility changes, but may not be to a level that it is limiting their daily activities.",
+      "type": "warning",
+    },
+  ],
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > ineligible male 85 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "Participants with the following vital sign findings on vital sign testing may not tolerate the intensity of functional testing. Instead of proceeding, thank them for coming to screening, and refer to their primary care provider, cardiologist, or emergency department for follow-up care.",
+      "type": "warning",
+    },
+  ],
+  "fastWalkingSpeed": null,
+  "fourSquareStepTest": null,
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": null,
+  "timedUpAndGoCognitive": null,
+  "usualWalkingSpeed": null,
+  "vitalSigns": [
+    {
+      "text": "This patient is ineligible for physical activity.",
+      "type": "danger",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > no demographics 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": null,
+  "fourSquareStepTest": null,
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": null,
+  "timedUpAndGoCognitive": null,
+  "usualWalkingSpeed": null,
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > null measurements 1`] = `
+{
+  "annualMobilityAssessment": null,
+  "fastWalkingSpeed": null,
+  "fourSquareStepTest": null,
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": null,
+  "timedUpAndGoCognitive": null,
+  "usualWalkingSpeed": null,
+  "vitalSigns": null,
+}
+`;
+
+exports[`Full interpretation scenario snapshots > very slow male 75 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": [
+    {
+      "text": "Fall Risk, <1.10 m/sec (Sn .76, Sp .60)",
+      "type": "danger",
+    },
+    {
+      "text": "Red Zone (< 1.07 m/s)
+Reference Mean 1.58 (Ages 70-79) Standard Deviation 0.51
+The participant likely has mobility issues that are limiting daily activities.",
+      "type": "danger",
+    },
+  ],
+  "fourSquareStepTest": [
+    {
+      "text": "Multiple Fall risk >=15 (Sn .85, Sp .88)",
+      "type": "danger",
+    },
+    {
+      "text": "Red Zone (> 15.1 sec)
+Reference Mean 10.9 (Ages 70-79) Standard Deviation 4.2
+The participant likely has mobility issues that are limiting daily activities.",
+      "type": "danger",
+    },
+  ],
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": [
+    {
+      "text": "Fall risk >12.0 sec (Sn .74, Sp .52)",
+      "type": "danger",
+    },
+    {
+      "text": "Frailty >=17.8 (Sn .93, Sp .98)",
+      "type": "danger",
+    },
+    {
+      "text": "Red Zone (> 11.9 sec)
+Reference Mean 9.2 (Ages 70-79) Standard Deviation 2.7
+The participant likely has mobility issues that are limiting daily activities.",
+      "type": "danger",
+    },
+  ],
+  "timedUpAndGoCognitive": [
+    {
+      "text": "Fall risk >11 sec (Sn 1.00, Sp .66)",
+      "type": "danger",
+    },
+    {
+      "text": "Red Zone (> 17.9 sec)
+Reference Mean 12.9 (Ages 70-79) Standard Deviation 5
+The participant likely has mobility issues that are limiting daily activities.",
+      "type": "danger",
+    },
+  ],
+  "usualWalkingSpeed": [
+    {
+      "text": "Fall Risk, <0.76m/sec (Sn .65, Sp .71)",
+      "type": "danger",
+    },
+    {
+      "text": "Frailty Risk, <0.63 m/sec (Sn .90, Sp .90)",
+      "type": "danger",
+    },
+    {
+      "text": "Red Zone (< 0.98 m/s)
+Reference Mean 1.18 (Ages 70-79) Standard Deviation 0.2
+The participant likely has mobility issues that are limiting daily activities.",
+      "type": "danger",
+    },
+  ],
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > vitals only 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": null,
+  "fourSquareStepTest": null,
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": null,
+  "timedUpAndGoCognitive": null,
+  "usualWalkingSpeed": null,
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;
+
+exports[`Full interpretation scenario snapshots > young patient 1`] = `
+{
+  "annualMobilityAssessment": [
+    {
+      "text": "This patient is eligible for the Annual Mobility Assessment.",
+      "type": "success",
+    },
+  ],
+  "fastWalkingSpeed": null,
+  "fourSquareStepTest": null,
+  "modifiedFourSquareStepTest": null,
+  "thirtySecondSitToStand": null,
+  "timedUpAndGo": null,
+  "timedUpAndGoCognitive": null,
+  "usualWalkingSpeed": null,
+  "vitalSigns": [
+    {
+      "text": "This patient is eligible for physical activity.",
+      "type": "success",
+    },
+  ],
+}
+`;

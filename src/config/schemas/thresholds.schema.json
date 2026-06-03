@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "thresholds.schema.json",
+  "title": "PhysioMeter Threshold Tables",
+  "description": "Age/sex normative data (mean, sd) used to derive Green/Yellow/Red mobility zones, plus the zone_defaults block that configures SD-band boundaries and zone descriptions.",
+  "type": "object",
+  "required": ["zone_defaults"],
+  "properties": {
+    "zone_defaults": { "$ref": "#/$defs/zone_defaults" }
+  },
+  "additionalProperties": {
+    "$ref": "#/$defs/threshold_table"
+  },
+  "$defs": {
+    "zone_defaults": {
+      "type": "object",
+      "required": ["yellow_sd", "red_sd", "descriptions"],
+      "additionalProperties": false,
+      "properties": {
+        "yellow_sd": {
+          "type": "number",
+          "description": "SD-multiplier for the yellow zone boundary (mean ± yellow_sd × sd). Must be < red_sd. 0 places the green/yellow boundary at the mean (per AMA v2.1).",
+          "minimum": 0
+        },
+        "red_sd": {
+          "type": "number",
+          "description": "SD-multiplier for the red zone boundary (mean ± red_sd × sd). Must be larger than yellow_sd.",
+          "exclusiveMinimum": 0
+        },
+        "descriptions": {
+          "type": "object",
+          "required": ["green", "yellow", "red"],
+          "additionalProperties": false,
+          "properties": {
+            "green": { "type": "string" },
+            "yellow": { "type": "string" },
+            "red": { "type": "string" }
+          }
+        }
+      }
+    },
+    "threshold_table": {
+      "type": "object",
+      "required": ["compare_as", "unit", "decimals"],
+      "additionalProperties": false,
+      "properties": {
+        "compare_as": {
+          "type": "string",
+          "description": "How to interpret the values. higher_is_better: lower scores are worse. lower_is_better: higher scores are worse.",
+          "enum": ["higher_is_better", "lower_is_better"]
+        },
+        "unit": {
+          "type": "string",
+          "description": "Display unit for the cutoff in the rendered message (e.g., \"m/s\", \"sec\")."
+        },
+        "decimals": {
+          "type": "integer",
+          "description": "Number of decimal places to render for the cutoff value.",
+          "minimum": 0
+        },
+        "Male": { "$ref": "#/$defs/sex_brackets" },
+        "Female": { "$ref": "#/$defs/sex_brackets" }
+      }
+    },
+    "sex_brackets": {
+      "type": "object",
+      "description": "Reference data keyed by age bracket.",
+      "propertyNames": {
+        "pattern": "^(\\d{2}-\\d{2}|\\d{2}\\+)$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/threshold_entry"
+      }
+    },
+    "threshold_entry": {
+      "type": "object",
+      "required": ["mean", "sd"],
+      "additionalProperties": false,
+      "properties": {
+        "mean": {
+          "type": "number",
+          "description": "Reference mean for the age/sex group."
+        },
+        "sd": {
+          "type": "number",
+          "description": "Standard deviation for the age/sex group."
+        }
+      }
+    }
+  }
+}
